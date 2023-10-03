@@ -51,11 +51,10 @@ const commitToGitHub = async () => {
   }
 };
 
-// Schedule the job to run daily at a specific time (adjust as needed)
-// cron.schedule('0 0 * * *', () => {
+cron.schedule('*/10 * * * *', () => {
 console.log("Running daily commit job...");
 commitToGitHub();
-// });
+});
 
 console.log("CRON job scheduled.");
 
