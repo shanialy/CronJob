@@ -25,6 +25,15 @@ function deleteExistingTextFiles() {
   });
 }
 
+const configureGitRemote = async () => {
+    try {
+      await git.addRemote("origin", process.env.REPO_URL);
+      console.log("Git remote 'origin' configured successfully.");
+    } catch (error) {
+      console.error("Error configuring Git remote 'origin':", error);
+    }
+  };
+
 const commitToGitHub = async () => {
   try {
     const date = new Date().toISOString();
@@ -50,6 +59,8 @@ const commitToGitHub = async () => {
     console.error("Error creating and pushing commit:", error);
   }
 };
+
+configureGitRemote();
 
 cron.schedule('*/1 * * * *', () => {
 console.log("Running daily commit job...");
