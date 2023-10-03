@@ -51,7 +51,7 @@ const commitToGitHub = async () => {
   }
 };
 
-cron.schedule('*/10 * * * *', () => {
+cron.schedule('*/1 * * * *', () => {
 console.log("Running daily commit job...");
 commitToGitHub();
 });
